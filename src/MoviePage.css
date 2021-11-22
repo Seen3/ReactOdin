@@ -1,0 +1,33 @@
+#boxx{
+    background-color: hsl(90, 35%, 49%, 0.85);
+    width: 80%;
+    height: 25em;
+    margin: 0 auto;
+    color: white;
+    padding: 3em;
+    border-radius: 13px;
+    border: 1px solid black;
+}
+#boxx h1{
+    font-size: 4em;
+}
+#boxx img{
+    float: right;
+}
+.rat{
+    float: right;
+    width: 14em;
+    height: 8em;
+}
+#green{
+    background-color: rgba(82, 224, 82, 0.575);
+}
+#red{
+    background-color: rgba(240, 80, 80, 0.459);
+}
+#black{
+    float: right;
+    height: 4em;
+    width: 16em;
+    background-color: rgba(0, 0, 0, 0.582);
+}
