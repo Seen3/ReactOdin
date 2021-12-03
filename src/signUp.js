@@ -1,12 +1,16 @@
+import axios from 'axios';
 import React,{useEffect, useRef} from 'react';
+import { Routes, Route, Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import './utils.css'
-export class SignUpBox extends React.Component{
+
+
+class SignUp extends React.Component{
     constructor(props)
     {
         super(props);
         this.state={
             name:'',
-            user:'',
             inpMail:'',
             inpPass:'',
             age:0,
@@ -35,7 +39,23 @@ export class SignUpBox extends React.Component{
     }
     handleLogin(change)
     {
-        this.setState(()=>{return {inpMail:change.target.value}});
+        change.preventDefault();
+        const newuser={
+            name:this.state.name,
+            mail:this.state.inpMail,
+            pass:this.state.inpPass,
+            age:this.state.age,
+        };
+        console.log("Logging in");
+        axios.post("http://localhost:5000/record/add",newuser)
+        .then((res)=>console.log(res.data));
+        this.setState({
+            name:'',
+            inpMail:'',
+            inpPass:'',
+            age:0,
+        });
+        this.props.fun();
     }
     render(){
         return (<div id="logbox">
@@ -46,6 +66,7 @@ export class SignUpBox extends React.Component{
             <input className="txt" type="password" placeholder="Password" value={this.state.inpPass} onChange={this.handleChangePass}></input>
             <button onClick={this.handleLogin} id="login">Sign-Up</button>
             <br></br>
+            <p>Already have an account?<Link to="/" style={{color:'#8BC0FF'}}>Login</Link></p>
             <a href="" id='help'>Need help?</a>
             <div id="inn">
             
@@ -54,4 +75,11 @@ export class SignUpBox extends React.Component{
             </div>
             </div>)
     }
+}
+export function SignUpBox(){
+    let navigate = useNavigate();
+    let fun=()=>{navigate("/")};
+    return(
+        <SignUp fun={fun}/>
+    )
 }
