@@ -6,7 +6,7 @@ import axios from 'axios';
 export function LoginWrapper()
 {   
     let navigate = useNavigate();
-    let fun=()=>{navigate("/search")};
+    let fun=(u)=>{navigate("/search",{ state: { user: u } })};
     return (<LoginBox fun={fun}/>);
 }
 
@@ -51,7 +51,8 @@ class LoginBox extends React.Component{
             alert("The user does not exist");
         }
         else{
-            this.props.fun();
+            console.log(uname);
+            this.props.fun(uname);
         }
         }
         );

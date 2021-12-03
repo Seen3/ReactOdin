@@ -12,8 +12,6 @@ export class NavbarTop extends React.Component{
                 <ul>
                 <li><a href=''>HOME</a></li>
                 <li><a href=''>PROFILE</a></li>
-                <li><a href=''>SETTINGS</a></li>
-                <li>{this.props.user}</li>
                 </ul>
             </nav>
         )
