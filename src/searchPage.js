@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './searchPage.css';
 export class NavbarTop extends React.Component{
     constructor(props)
@@ -10,8 +11,8 @@ export class NavbarTop extends React.Component{
         return(
             <nav>
                 <ul>
-                <li><a href=''>HOME</a></li>
-                <li><a href=''>PROFILE</a></li>
+                <li><Link to='../'>LOGOUT</Link></li>
+                <li><Link to='../profile'>PROFILE</Link></li>
                 </ul>
             </nav>
         )
