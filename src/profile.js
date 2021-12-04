@@ -45,15 +45,15 @@ class Profile extends React.Component
         let exists=false;
         data.forEach(element => {
             console.log("Comparing",element.name,uname);
-            if (element.name==uname)
+            if (element.name===uname)
             {
                 console.log("Name Match");
                 console.log("Comparing",element.pass,pass);
-                if(element.pass==pass)
+                if(element.pass===pass)
                 {
                     console.log("Pass Match");
                     console.log("Comparing",element.mail,mail);
-                    if (element.mail==mail)
+                    if (element.mail===mail)
                     {
                         console.log("Mail Match");
                         exists=true;

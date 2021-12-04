@@ -38,9 +38,9 @@ class LoginBox extends React.Component{
         let pass=this.state.inpPass;
         let exists=false;
         data.forEach(element => {
-            if (element.name==uname)
+            if (element.name===uname)
             {
-                if(element.pass==pass)
+                if(element.pass===pass)
                 {
                     exists=true;
                 }
