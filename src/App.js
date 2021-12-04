@@ -3,7 +3,7 @@
 import React from 'react';
 import './App.css';
 import { SearchPage } from './searchPage';
-import { MoviePage } from './MoviePage';
+import { MoviePageWrapper } from './MoviePage';
 import { LoginWrapper } from './utils';
 import { SignUpBox } from './signUp';
 import { Routes, Route, Link } from "react-router-dom";
@@ -16,9 +16,9 @@ function App(){
     <Route path="signup" element={<SignUpBox />} />
     <Route path="search" element={<SearchPage />} />
     <Route path="profile" element={<ProfileWrapper />} />
+    <Route path="movie" element={<MoviePageWrapper />} />
     
     </Routes>
   );
 }
 export default App;
-  

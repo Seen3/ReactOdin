@@ -12,8 +12,10 @@ export class NavbarTop extends React.Component{
         return(
             <nav>
                 <ul>
-                <li><Link to='../'>LOGOUT</Link></li>
+                <li><Link to='../movie'>MOVIES</Link></li>
+                <li><Link to='../search'>SEARCH</Link></li>
                 <li><Link to='../profile'>PROFILE</Link></li>
+                <li><Link to='../'>LOGOUT</Link></li>
                 </ul>
             </nav>
         )
@@ -46,7 +48,14 @@ class SearchBox extends React.Component{
         };
         this.changeData=this.changeData.bind(this);
         this.search=this.search.bind(this);
+        this.searchKey=this.searchKey.bind(this);
     }
+    searchKey(e){
+        if(e.key === 'Enter'){
+            this.search();
+        }
+    }
+
     changeData(change)
     {
         this.setState(()=>{return{data:change.target.value}});
@@ -80,7 +89,8 @@ class SearchBox extends React.Component{
         console.log(xxx);
         return(
             <div id="inpdiv">
-                <input type='text' placeholder='SEARCH HERE...' value={this.state.data} onChange={this.changeData}/>
+                <input type='text' placeholder='SEARCH HERE...' value={this.state.data} style={{height:'3em'}}onChange={this.changeData} onKeyPress={(e) => this.searchKey(e)}/>
+                <br/><br/>
                 <button style={{borderRadius:'2em',width:'8em',height:'3em'}} onClick={this.search}>Search</button>
                 <br/>
                 <div>
