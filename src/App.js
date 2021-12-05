@@ -8,6 +8,7 @@ import { LoginWrapper } from './utils';
 import { SignUpBox } from './signUp';
 import { Routes, Route, Link } from "react-router-dom";
 import {ProfileWrapper} from "./profile"
+import {HelpPageWrapper} from "./HelpPage";
 import axios from 'axios';
 function App(){
   return (
@@ -17,6 +18,7 @@ function App(){
     <Route path="search" element={<SearchPage />} />
     <Route path="profile" element={<ProfileWrapper />} />
     <Route path="movie" element={<MoviePageWrapper />} />
+    <Route path="help" element={<HelpPageWrapper />} />
     
     </Routes>
   );
