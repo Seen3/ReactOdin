@@ -63,14 +63,20 @@
           }
           .popup_inner {
             position: absolute;
-            left: 15%;
-            right: 15%;
-            top: 20%;
-            bottom: 20%;
+            left: 10%;
+            right: 10%;
+            top: 5%;
+            bottom: 5%;
             margin: auto;
             border-radius: 20px;
             background: white;
           }
+
+	  .popup_text {
+	     font-family: Apple Chancery, cursive;
+             font-size: 20px;
+	     color: green
+	   }
 
           * {
             -webkit-box-sizing: border-box;
@@ -79,8 +85,7 @@
           
           body { font-family: sans-serif; }
           
-          .gallery {
-            background: hsl(90, 35%, 49%, 0.85);
+          .gallery {;
           }
           
           .gallery-cell {

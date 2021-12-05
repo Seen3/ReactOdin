@@ -12,7 +12,8 @@ var k = 0;
 var m = 0;
 var link;
 var url;
-var displayLinks = ['http://www.omdbapi.com/?s=avengers&apikey=644805fc', 'http://www.omdbapi.com/?s=fast&apikey=644805fc', 'http://www.omdbapi.com/?s=madagascar&apikey=644805fc', 'http://www.omdbapi.com/?s=hunger&apikey=644805fc', 'http://www.omdbapi.com/?s=mission&apikey=644805fc'];
+var imageUrl = "";
+var displayLinks = ['http://www.omdbapi.com/?s=avengers&apikey=644805fc', 'http://www.omdbapi.com/?s=fast&apikey=644805fc', 'http://www.omdbapi.com/?s=madagascar&apikey=644805fc', 'http://www.omdbapi.com/?s=hunger&apikey=644805fc', 'http://www.omdbapi.com/?s=mission&apikey=644805fc', 'http://www.omdbapi.com/?s=transformers&apikey=644805fc', 'http://www.omdbapi.com/?s=Harry&apikey=644805fc'];
 var movieData = [];
 var movieDetails = [];
 var tempMovieDetails = [];
@@ -20,22 +21,28 @@ var movieAddData = [];
 var movieAddData2 = [];
 var movieAddData3 = [];
 var movieAddData4 = [];
+var movieAddData5 = [];
+var movieAddData6 = [];
 
-export class NavbarTop extends React.Component{
-    constructor(props)
-    {
+export class NavbarTop extends React.Component {
+    constructor(props) {
         super(props);
     }
-    render()
-    {
-        return(
-            <nav>
-                <ul>
-                <li><Link to='../movie'>MOVIES</Link></li>
-                <li><Link to='../search'>SEARCH</Link></li>
-                <li><Link to='../profile'>PROFILE</Link></li>
-                <li><Link to='../'>LOGOUT</Link></li>
-                </ul>
+
+    render() {
+        const navStyle = {
+            height: '60px',
+            fontSize: '20px'
+        }
+
+        return (
+            <nav align="center" style={navStyle}>
+                <br />
+                <Link to='../movie' style={{ color: "white" }}> <b>|| MOVIES ||</b> </Link>
+                <Link to='../search' style={{ color: "white" }}> <b> SEARCH ||</b> </Link>
+                <Link to='../help' style={{ color: "white" }}> <b> HELP ||</b> </Link>
+                <Link to='../profile' style={{ color: "white" }}> <b> PROFILE ||</b> </Link>
+                <Link to='../' style={{ color: "white" }}> <b> LOGOUT </b> ||</Link>
             </nav>
         )
     }
@@ -46,9 +53,15 @@ class Popup extends React.Component {
         return (
             <div className='popup'>
                 <div className='popup_inner'>
-                    <p>{this.props.text}</p>
-                    <button onClick={this.props.closePopup}>Close Details</button>
+                    <div style={{ float: "left" }}>
+                        <img src={this.props.image} style={{ margin: "15px", borderRadius: "15px", height: "600px" }} />
+                    </div>
+                    <p className='popup_text'>{this.props.text}</p>
+                    <div align="center">
+                        <button onClick={this.props.closePopup}>Close Details</button>
+                    </div>
                     <br /><br />
+                    <div style={{ clear: "both" }} />
                 </div>
             </div>
         );
@@ -68,7 +81,10 @@ export class MoviePage extends React.Component {
             appendAddData2: [],
             appendAddData3: [],
             appendAddData4: [],
+            appendAddData5: [],
+            appendAddData6: [],
             appendDetails: [],
+            appendPictures: [],
             showPopup: false
         };
 
@@ -84,6 +100,7 @@ export class MoviePage extends React.Component {
     }
 
     movieDetails(movie) {
+        imageUrl = movie.target.src;
         console.log(movie.target.alt);
         url = "http://www.omdbapi.com/?t=" + movie.target.alt + "&apikey=644805fc";
         fetch(url)
@@ -114,13 +131,15 @@ export class MoviePage extends React.Component {
                         appendDetails: tempMovieDetails.map((movie) => {
                             return (
                                 <>
-                                    <p className="paragraphStyle">{movie}</p>
+                                    <p className="popup_text">{movie}</p>
                                 </>
                             );
                         }),
+                        appendPictures: imageUrl,
                         url: ""
                     });
 
+                    imageUrl = "";
                     movieDetails = [];
                     tempMovieDetails = [];
                 }
@@ -171,7 +190,7 @@ export class MoviePage extends React.Component {
 
     add_api() {
         m++;
-        if (m > 5) {
+        if (m > 7) {
             m = 0;
             alert("Sorry, Page Limit Exceeded! Try searching back in a while!");
         }
@@ -192,13 +211,19 @@ export class MoviePage extends React.Component {
                         movieAddData3 = data;
                     else if (m === 4)
                         movieAddData4 = data;
+                    else if (m === 5)
+                        movieAddData5 = data;
+                    else if (m === 6)
+                        movieAddData6 = data;
 
                     console.log(movieAddData);
                     console.log(movieAddData2);
                     console.log(movieAddData3);
                     console.log(movieAddData4);
+                    console.log(movieAddData5);
+                    console.log(movieAddData6);
 
-                    if (movieAddData.length === 0 && movieAddData2.length === 0 && movieAddData3.length === 0 && movieAddData4.length === 0) {
+                    if (movieAddData.length === 0 && movieAddData2.length === 0 && movieAddData3.length === 0 && movieAddData4.length === 0 && movieAddData5.length === 0 && movieAddData6.length === 0) {
                         alert("Sorry, No such movie found! Try searching for something else!");
                     }
 
@@ -208,7 +233,7 @@ export class MoviePage extends React.Component {
                                 appendAddData: movieAddData.Search.map((movie) => {
                                     return (
                                         <>
-                                            <img src={movie.Poster} alt={movie.Title} className="imageStyle" onClick={(e) => this.movieDetails(e)} onDoubleClick={this.togglePopup.bind(this)} />
+                                            <img src={movie.Poster} alt={movie.Title} className="imageStyle" onMouseOver={(e) => this.movieDetails(e)} onDoubleClick={this.togglePopup.bind(this)} />
                                         </>
                                     );
                                 }),
@@ -220,7 +245,7 @@ export class MoviePage extends React.Component {
                                 appendAddData2: movieAddData2.Search.map((movie) => {
                                     return (
                                         <>
-                                            <img src={movie.Poster} alt={movie.Title} className="imageStyle" onClick={(e) => this.movieDetails(e)} onDoubleClick={this.togglePopup.bind(this)} />
+                                            <img src={movie.Poster} alt={movie.Title} className="imageStyle" onMouseOver={(e) => this.movieDetails(e)} onDoubleClick={this.togglePopup.bind(this)} />
                                         </>
                                     );
                                 }),
@@ -232,7 +257,7 @@ export class MoviePage extends React.Component {
                                 appendAddData3: movieAddData3.Search.map((movie) => {
                                     return (
                                         <>
-                                            <img src={movie.Poster} alt={movie.Title} className="imageStyle" onClick={(e) => this.movieDetails(e)} onDoubleClick={this.togglePopup.bind(this)} />
+                                            <img src={movie.Poster} alt={movie.Title} className="imageStyle" onMouseOver={(e) => this.movieDetails(e)} onDoubleClick={this.togglePopup.bind(this)} />
                                         </>
                                     );
                                 }),
@@ -244,17 +269,44 @@ export class MoviePage extends React.Component {
                                 appendAddData4: movieAddData4.Search.map((movie) => {
                                     return (
                                         <>
-                                            <img src={movie.Poster} alt={movie.Title} className="imageStyle" onClick={(e) => this.movieDetails(e)} onDoubleClick={this.togglePopup.bind(this)} />
+                                            <img src={movie.Poster} alt={movie.Title} className="imageStyle" onMouseOver={(e) => this.movieDetails(e)} onDoubleClick={this.togglePopup.bind(this)} />
                                         </>
                                     );
                                 }),
                             });
                         }
 
+                        if (m === 5) {
+                            this.setState({
+                                appendAddData5: movieAddData5.Search.map((movie) => {
+                                    return (
+                                        <>
+                                            <img src={movie.Poster} alt={movie.Title} className="imageStyle" onMouseOver={(e) => this.movieDetails(e)} onDoubleClick={this.togglePopup.bind(this)} />
+                                        </>
+                                    );
+                                }),
+                            });
+                        }
+
+                        if (m === 6) {
+                            this.setState({
+                                appendAddData6: movieAddData6.Search.map((movie) => {
+                                    return (
+                                        <>
+                                            <img src={movie.Poster} alt={movie.Title} className="imageStyle" onMouseOver={(e) => this.movieDetails(e)} onDoubleClick={this.togglePopup.bind(this)} />
+                                        </>
+                                    );
+                                }),
+                            });
+                        }
+
+
                         movieAddData = [];
                         movieAddData2 = [];
                         movieAddData3 = [];
                         movieAddData4 = [];
+                        movieAddData5 = [];
+                        movieAddData6 = [];
 
                         console.log(this.state.appendAddData);
                     }
@@ -269,8 +321,9 @@ export class MoviePage extends React.Component {
     render() {
 
         const headingStyle = {
-            fontFamily: "Jazz LET, fantasy",
+            fontFamily: "Apple Chancery",
             fontSize: "100px",
+            color: "white"
         };
 
         const divStyle = {
@@ -298,18 +351,21 @@ export class MoviePage extends React.Component {
 
         return (
             <div style={divStyle} id="Movie_Details">
-                <h1 align="center" style={headingStyle} onClick={this.call_api}>Explore<br /></h1><br /><br /><br /><br />
+                <h1 align="center" style={headingStyle} onMouseOver={this.call_api}>MOVIES<br /></h1>
                 <div className="gallery js-flickity" align="center">
                     {this.state.appendData}
                     {this.state.appendAddData}
                     {this.state.appendAddData2}
                     {this.state.appendAddData3}
                     {this.state.appendAddData4}
+                    {this.state.appendAddData5}
+                    {this.state.appendAddData6}
                 </div><br /><br /><br /><br />
-                <div style={divStyle} align="center">
+                <div style={divStyle}>
                     {this.state.showPopup ?
                         <Popup
                             text={this.state.appendDetails}
+                            image={this.state.appendPictures}
                             closePopup={this.togglePopup.bind(this)}
                         />
                         : null
@@ -324,17 +380,15 @@ export class MoviePage extends React.Component {
     }
 }
 
-export class MoviePageWrapper extends React.Component{
-    constructor(props)
-    {
+export class MoviePageWrapper extends React.Component {
+    constructor(props) {
         super(props);
     }
-    render()
-    {
+    render() {
         return (
             <div>
-                <NavbarTop user={this.props.user}/>
-                <MoviePage/>
+                <NavbarTop user={this.props.user} />
+                <MoviePage />
             </div>
         )
     }

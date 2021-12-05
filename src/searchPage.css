@@ -42,3 +42,30 @@ footer h1{
     font-size: 4em;
     color: white;
 }
+.parallax {
+            background-image: url("Movie_Critic_Webpage_Background.jpg");
+            height: 100%;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            }
+        
+        .paragraphStyle { 
+            font-family: Apple Chancery, cursive;
+            font-size: 25px;
+            backgroundColor: hsl(90, 35%, 49%, 0.85);
+	    color: white
+            }
+
+        .divStyle {
+            background-color: lightgreen;
+            height: 100%;
+            width: 90%;
+            margin-left: 5%;
+            border-radius: 25px;
+            }
+        
+        .imageStyle {
+            border-radius: 15px;
+        }
