@@ -26,16 +26,20 @@ export class NavbarTop extends React.Component{
     {
         super(props);
     }
+    
     render()
     {
-        return(
-            <nav>
-                <ul>
-                <li><Link to='../movie'>MOVIES</Link></li>
-                <li><Link to='../search'>SEARCH</Link></li>
-                <li><Link to='../profile'>PROFILE</Link></li>
-                <li><Link to='../'>LOGOUT</Link></li>
-                </ul>
+        const navStyle = {
+            height: '30px',
+            fontSize: '20px'
+        }
+
+        return (
+            <nav align="center" style={navStyle}>
+                <Link to='../movie'> <b>|| MOVIES ||</b> </Link>
+                <Link to='../search'> <b> SEARCH ||</b> </Link>
+                <Link to='../profile'> <b> PROFILE ||</b> </Link>
+                <Link to='../'> <b> LOGOUT </b> ||</Link>
             </nav>
         )
     }
