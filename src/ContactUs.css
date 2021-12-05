@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Zen+Kurenaido&display=swap');
+#contactus {
+    display: block;
+    text-align: left;
+    color: white;
+    width: 70%;
+    height: 120%;
+    background-color: hsl(90, 35%, 39%, 0.95);
+    margin: auto;
+    border-radius: 3em;
+    font-family: Roboto;
+    padding: 2.7% 2.7%;
+}
+
+body {
+    background-image: url("https://img.wallpapersafari.com/desktop/1440/900/24/74/zgeTuV.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+.txt {
+    margin: 4%;
+    width: 72%;
+    padding: 2%;
+    border-radius: 30px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    color: #574D4D;
+}
+
+.back {
+    font-size: large;
+    color: rgba(104, 64, 64, 0.945);
+    text-align: left;
+    margin: 1em 0;
+    width: 100%;
+    height: 2em;
+}
+
+.column {
+    float: left;
+    width: 30%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    padding: 0 16px;
+}
+
+.container::after,
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.title {
+    color: grey;
+}
+
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: #555;
+}

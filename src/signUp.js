@@ -72,6 +72,8 @@ class SignUp extends React.Component{
             
             <button type="button" className="logins">Sign-Up with Google</button>
             <button type="button" className="logins">Sign-Up with Facebook</button>
+            <div className="triangle"></div>
+            <div className="tri"></div>
             </div>
             </div>)
     }
