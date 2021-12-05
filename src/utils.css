@@ -4,7 +4,7 @@
     text-align: center;
     float: right;
     color: white;
-    width:20%;
+    width:28%;
     background-color: #3f3c42ee;
     margin: 6.5em 13em 0 0;
     border-radius: 3em;
@@ -39,6 +39,37 @@ body{
     margin:1em 0;
     width: 100%;
     height: 2em;
+}
+
+
+
+.triangle{
+    display: block;
+	position:absolute;
+	right:1%;
+	top:10%;
+	width: 10%;
+	height: 20%;
+	border-top: 1200px solid transparent;
+	border-bottom: 2200px solid transparent;
+	border-left: 2900px solid #1E7922;
+	margin-top:-1000px;
+    margin-right:900px;
+} 
+
+.tri
+{
+    display: block;
+	position:absolute;
+	right:1%;
+	top:1%;
+	width: 10%;
+	height: 10%;
+	border-top: 1000px solid transparent;
+	border-bottom: 1200px solid transparent;
+	border-left: 1000px solid #0c3f0fcc;
+	margin-top:-1000px;
+    margin-right:1000px;
 }
 #inn{
     text-align: left;
