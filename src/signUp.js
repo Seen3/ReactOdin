@@ -66,12 +66,8 @@ class SignUp extends React.Component{
             <input className="txt" type="password" placeholder="Password" value={this.state.inpPass} onChange={this.handleChangePass}></input>
             <button onClick={this.handleLogin} id="login">Sign-Up</button>
             <br></br>
-            <p>Already have an account?<Link to="/" style={{color:'#8BC0FF'}}>Login</Link></p>
-            <a href="" id='help'>Need help?</a>
+            <p>Already have an account? <Link to="/" style={{color: "lightgreen"}}>Login</Link></p>
             <div id="inn">
-            
-            <button type="button" className="logins">Sign-Up with Google</button>
-            <button type="button" className="logins">Sign-Up with Facebook</button>
             </div>
             </div>)
     }
