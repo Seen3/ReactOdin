@@ -58,7 +58,9 @@ class LoginBox extends React.Component{
         );
     }
     render(){
-        return (<div id="logbox">
+        return (
+        <div>
+        <div id="logbox">
             <h1 id="title">Sign In</h1>
             <input className="txt" type="text" placeholder="Username" value={this.state.user} onChange={this.handleChangeUser}></input>
             <input className="txt" type="password" placeholder="Password" value={this.state.inpPass} onChange={this.handleChangePass}></input>
@@ -75,6 +77,9 @@ class LoginBox extends React.Component{
             <button type="button" className="logins">Login with Google</button>
             <button type="button" className="logins">Login with Facebook</button>
             </div>
+            </div>
+            <div className="triangle"></div>
+            <div className="tri"></div>
             </div>)
     }
 }
